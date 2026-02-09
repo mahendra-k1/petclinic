@@ -9,7 +9,6 @@ pipeline {
         HELM_BIN = "/usr/local/bin/helm"
         APP_NAME = "petclinic-app"
         CHART_NAME = "petclinic"
-        NAMESPACE = "petclinic-ns"
         IMAGE_REPO = "registry.hub.docker.com/azureadmin12/petclinic"
     }
 
@@ -31,8 +30,6 @@ pipeline {
                 echo "Deploying application to Kubernetes"
                 sh """
                 ${HELM_BIN} upgrade --install ${APP_NAME} ${CHART_NAME} \
-                  --namespace ${NAMESPACE} \
-                  --create-namespace \
                   --set image.repository=${IMAGE_REPO} \
                   --set image.tag=${IMAGE_TAG}
                 """
