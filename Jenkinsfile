@@ -15,13 +15,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                echo "Checking out source code"
-                checkout scm
-            }
-        }
-
         stage('Prepare Helm Chart') {
             steps {
                 echo "Preparing Helm chart"
@@ -52,8 +45,6 @@ pipeline {
                 sh """
                 helm list -n ${NAMESPACE}
                 """
-				// kubectl get pods -n ${NAMESPACE} // k8s host in different ec2
-                // kubectl get svc -n ${NAMESPACE}
             }
         }
     }
