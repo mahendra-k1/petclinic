@@ -50,10 +50,10 @@ pipeline {
             steps {
                 echo "Verifying deployment"
                 sh """
-                kubectl get pods -n ${NAMESPACE}
-                kubectl get svc -n ${NAMESPACE}
                 helm list -n ${NAMESPACE}
                 """
+				// kubectl get pods -n ${NAMESPACE} // k8s host in different ec2
+                // kubectl get svc -n ${NAMESPACE}
             }
         }
     }
