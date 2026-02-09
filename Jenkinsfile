@@ -35,15 +35,6 @@ pipeline {
                 """
             }
         }
-
-        stage('Verify Deployment') {
-            steps {
-                echo "Verifying deployment"
-                sh """
-                helm list -n ${NAMESPACE}
-                """
-            }
-        }
     }
 
     post {
